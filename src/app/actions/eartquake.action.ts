@@ -7,6 +7,10 @@ export async function PostEarthquake(formData: FormData) {
     const latitude = formData.get("lat")?.toString();
     const longtitude = formData.get("lng")?.toString();
 
+    if (!city || !magnitude || !longtitude || !latitude) return {
+        success: false,
+        message: "All fields are required"
+    }
     await prisma.earthquake.create({
         data: {
             city: city,
@@ -16,6 +20,11 @@ export async function PostEarthquake(formData: FormData) {
             longtitude: longtitude,
         }
     })
+
+    return {
+        success: true,
+        message: "Added Successfully!"
+    }
 }
 
 export async function GetEarthquake() {
