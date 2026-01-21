@@ -1,80 +1,76 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Map, MapControls, useMap } from "@/components/ui/map";
+import { Map, useMap } from "@/components/ui/map";
 import { Button } from "@/components/ui/button";
 import { RotateCcw, Mountain } from "lucide-react";
 
 function MapController() {
-  const { map, isLoaded } = useMap();
-  const [pitch, setPitch] = useState(0);
-  const [bearing, setBearing] = useState(0);
+    const { map, isLoaded } = useMap();
+    const [pitch, setPitch] = useState(0);
+    const [bearing, setBearing] = useState(0);
 
-  useEffect(() => {
-    if (!map || !isLoaded) return;
+    useEffect(() => {
+        if (!map || !isLoaded) return;
 
-    const handleMove = () => {
-      setPitch(Math.round(map.getPitch()));
-      setBearing(Math.round(map.getBearing()));
+        const handleMove = () => {
+            setPitch(Math.round(map.getPitch()));
+            setBearing(Math.round(map.getBearing()));
+        };
+
+        map.on("move", handleMove);
+        return () => {
+            map.off("move", handleMove);
+        };
+    }, [map, isLoaded]);
+
+    const handle3DView = () => {
+        map?.easeTo({
+            pitch: 60,
+            bearing: -20,
+            duration: 1000,
+        });
     };
 
-    map.on("move", handleMove);
-    return () => {
-      map.off("move", handleMove);
+    const handleReset = () => {
+        map?.easeTo({
+            pitch: 0,
+            bearing: 0,
+            duration: 1000,
+        });
     };
-  }, [map, isLoaded]);
 
-  const handle3DView = () => {
-    map?.easeTo({
-      pitch: 60,
-      bearing: -20,
-      duration: 1000,
-    });
-  };
+    if (!isLoaded) return null;
 
-  const handleReset = () => {
-    map?.easeTo({
-      pitch: 0,
-      bearing: 0,
-      duration: 1000,
-    });
-  };
-
-  if (!isLoaded) return null;
-
-  return (
-    <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
-      <div className="flex gap-2">
-        <Button size="sm" variant="secondary" onClick={handle3DView}>
-          <Mountain className="size-4 mr-1.5" />
-          3D View
-        </Button>
-        <Button size="sm" variant="secondary" onClick={handleReset}>
-          <RotateCcw className="size-4 mr-1.5" />
-          Reset
-        </Button>
-      </div>
-      <div className="rounded-md bg-background/90 backdrop-blur px-3 py-2 text-xs font-mono border">
-        <div>Pitch: {pitch}°</div>
-        <div>Bearing: {bearing}°</div>
-      </div>
-    </div>
-  );
+    return (
+        <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
+            <div className="flex gap-2">
+                <Button size="sm" variant="secondary" onClick={handle3DView}>
+                    <Mountain className="size-4 mr-1.5" />
+                    3D View
+                </Button>
+                <Button size="sm" variant="secondary" onClick={handleReset}>
+                    <RotateCcw className="size-4 mr-1.5" />
+                    Reset
+                </Button>
+            </div>
+            <div className="rounded-md bg-background/90 backdrop-blur px-3 py-2 text-xs font-mono border">
+                <div>Pitch: {pitch}°</div>
+                <div>Bearing: {bearing}°</div>
+            </div>
+        </div>
+    );
 }
 
 export function Philippines() {
-  return (
-    <div className="h-screen w-full">
-      <Map center={[-73.9857, 40.7484]} zoom={15}>
-        <MapController />
-         <MapControls
-          position="bottom-right"
-          showZoom
-          showCompass
-          showLocate
-          showFullscreen
-        />
-      </Map>
-    </div>
-  );
+    return (
+        <div className="h-screen w-full">
+            <Map
+                center={[121.774, 12.8797]} 
+                zoom={5}
+            >
+                <MapController />
+            </Map>
+        </div>
+    );
 }
