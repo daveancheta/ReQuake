@@ -67,9 +67,8 @@ export function Philippines() {
     const eartquake = [
         {
             id: 1,
-            name: "Sultan Kudarat",
+            city: "Sultan Kudarat",
             label: "Earthquake",
-            category: "City",
             magnitude: 3.0,
             dateandtime: "21 January 2026 - 01:31 PM",
             lng: 124.3337268180007,
@@ -78,9 +77,8 @@ export function Philippines() {
         },
         {
             id: 2,
-            name: "Sultan Kudarat",
+            city: "Sultan Kudarat",
             label: "Earthquake",
-            category: "City",
             magnitude: 3.0,
             dateandtime: "21 January 2026 - 01:31 PM",
             lng: 124.63296678973343,
@@ -88,9 +86,8 @@ export function Philippines() {
         },
         {
             id: 3,
-            name: "Sultan Kudarat",
+            city: "Sultan Kudarat",
             label: "Earthquake",
-            category: "City",
             magnitude: 4.9,
             dateandtime: "21 January 2026 - 01:31 PM",
             lng: 123.31716750119328,
@@ -98,9 +95,8 @@ export function Philippines() {
         },
         {
             id: 4,
-            name: "Quezon City",
+            city: "Quezon City",
             label: "Earthquake",
-            category: "City",
             magnitude: 7.0,
             dateandtime: "21 January 2026 - 01:31 PM",
             lng: 121.05946518674459,
@@ -127,17 +123,14 @@ export function Philippines() {
                             <div className="relative h-32 overflow-hidden rounded-t-md">
                                 <img
                                     src={"https://gelogia.com/wp-content/uploads/2024/10/earthquake-1080x599.jpg"}
-                                    alt={eartquake.name}
+                                    alt={eartquake.city}
                                     className="object-cover"
                                 />
                             </div>
                             <div className="space-y-2 p-3">
                                 <div>
-                                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                                        {eartquake.category}
-                                    </span>
-                                    <h3 className="font-semibold text-foreground leading-tight">
-                                        {eartquake.name}
+                                    <h3 className="font-semibold text-foreground leading-tight text-lg">
+                                        {eartquake.city}
                                     </h3>
                                 </div>
                                 <div className="flex items-center gap-3 text-sm">
@@ -152,13 +145,13 @@ export function Philippines() {
                                 </div>
                             </div>
                         </MarkerPopup>
-                          <MapControls
-          position="bottom-right"
-          showZoom
-          showCompass
-          showLocate
-          showFullscreen
-        />
+                        <MapControls
+                            position="bottom-right"
+                            showZoom
+                            showCompass
+                            showLocate
+                            showFullscreen
+                        />
                     </MapMarker>
                 ))}
             </Map>
