@@ -14,12 +14,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 export function AddNewEarthquake() {
-    const { handlePostMovie } = UseEarthquakeStore();
+    const { handlePostEarthquake } = UseEarthquakeStore();
     const handlePost = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const formData = new FormData(e.currentTarget)
-        handlePostMovie(formData)
+        handlePostEarthquake(formData)
     }
     return (
         <Dialog open={true} modal={false}>

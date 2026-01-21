@@ -17,3 +17,17 @@ export async function PostEarthquake(formData: FormData) {
         }
     })
 }
+
+export async function GetEarthquake() {
+    const earthquake = await prisma.earthquake.findMany()
+
+    return earthquake.map(e => ({
+        id: e.id,
+        city: e.city,
+        label: e.label,
+        magnitude: e.magnitude,
+        latitude: e.latitude,
+        longtitude: e.longtitude,
+        timestamp: e.timestamp,
+    }))
+}
