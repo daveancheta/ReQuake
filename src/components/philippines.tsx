@@ -68,9 +68,16 @@ function MapController() {
 export function Philippines() {
     const { handleGetEarthquake, earthquake } = UseEarthquakeStore();
 
+
     useEffect(() => {
         handleGetEarthquake()
-    }, [handleGetEarthquake])
+
+        const interval = setInterval(() => {
+            handleGetEarthquake()
+        }, 1000)
+
+        return () => clearInterval(interval)
+    }, [])
 
     //   const earthquake = [
     //     {
