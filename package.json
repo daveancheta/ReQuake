@@ -2,6 +2,8 @@
   "name": "requake",
   "version": "0.1.0",
   "private": true,
+  "author": "Heaven Dave Quimpo Ancheta",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

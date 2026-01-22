@@ -207,10 +207,10 @@ This ensures compliance with data usage policies and legal requirements.
 This project can be adapted and used in other projects with the following considerations:
 
 - ✅ **Open Source**: The codebase is available for use in other projects
+- ✅ **MIT Licensed**: Free to use, modify, and distribute (including commercial use)
 - ✅ **Customizable**: The map can be configured for different regions by adjusting coordinates and map center
 - ✅ **Extensible**: The database schema and components can be modified to suit different use cases
 - ⚠️ **Data Requirements**: You must provide your own data source or implement manual data entry
-- ⚠️ **License**: Check the license terms before using in commercial projects
 
 ### Adapting for Other Regions
 
@@ -223,7 +223,7 @@ To adapt this project for tracking earthquakes in other regions:
 
 ## License
 
-This project is for demo purposes only.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
