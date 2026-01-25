@@ -74,7 +74,7 @@ export function Philippines() {
 
         const interval = setInterval(() => {
             handleGetEarthquake()
-        }, 1000)
+        }, 10000)
 
         return () => clearInterval(interval)
     }, [])
